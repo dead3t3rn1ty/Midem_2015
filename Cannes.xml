@@ -1,0 +1,40 @@
+<!DOCTYPE patchbay>
+<patchbay version="0.3.13" name="Cannes">
+ <output-sockets>
+  <socket exclusive="off" client="PulseAudio JACK Sink" type="jack-audio" name="Pulse">
+   <plug>front-left</plug>
+   <plug>front-right</plug>
+  </socket>
+  <socket exclusive="off" client="jack_rack" type="jack-audio" name="Rack">
+   <plug>out_1</plug>
+   <plug>out_2</plug>
+  </socket>
+  <socket exclusive="off" client="KAOSSILATOR PRO\+" type="alsa-midi" name="Kaossilator">
+   <plug>KAOSSILATOR PRO\+ MIDI 1</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket exclusive="off" client="system" type="jack-audio" name="Audio_out">
+   <plug>playback_1</plug>
+   <plug>playback_2</plug>
+  </socket>
+  <socket exclusive="off" client="hackday" type="alsa-midi" name="Hack">
+   <plug>in_1</plug>
+  </socket>
+  <socket exclusive="off" client="JACK Rack" type="alsa-midi" name="Rack_control">
+   <plug>Control</plug>
+  </socket>
+  <socket exclusive="off" client="jack_rack" type="jack-audio" name="Rack">
+   <plug>in_1</plug>
+   <plug>in_2</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable output="Pulse" input="Rack" type="jack-audio"/>
+  <cable output="Rack" input="Audio_out" type="jack-audio"/>
+  <cable output="Kaossilator" input="Rack_control" type="alsa-midi"/>
+  <cable output="Kaossilator" input="Hack" type="alsa-midi"/>
+ </cables>
+</patchbay>
+
