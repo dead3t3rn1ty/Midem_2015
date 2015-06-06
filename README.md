@@ -15,6 +15,9 @@ Selecting a different time using the "TAP TEMPO" button will trigger a query on 
 ## Dependencies
 
 Spotify linux desktop client (it uses the dbus interface to control the spotify playback).
+
 Jack.
+
 Jack-rack to apply LADSPA filters.
+
 Python libraries: time, dbus, jack, datetime, json, requests, mididings.
