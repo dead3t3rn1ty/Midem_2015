@@ -75,7 +75,7 @@ def temporead(ev):
          delta = t2 - t1
          bpm = ( 60000000 / delta.microseconds ) / 24
          diff = abs( bpm_g - bpm )
-         if diff > 3 and bpm < 280 and bpm > 60:
+         if ( diff / bpm) * 100 > 2 and bpm < 280 and bpm > 60:
             bpm_g = bpm
             print("New tempo!")
             print(bpm_g)
