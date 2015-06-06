@@ -35,8 +35,8 @@ def getTracks(tempo):
    "bucket" : [ "id:spotify" , "tracks" ],
    "sort" : "loudness-desc" }
    query["api_key"] = echonest_apikey
-   query["min_tempo"] = tempo - 2
-   query["max_tempo"] = tempo + 2
+   query["min_tempo"] = tempo - 3
+   query["max_tempo"] = tempo + 3
 
    print("Tempo query")
    print(query["min_tempo"])
@@ -78,6 +78,9 @@ def controllerfy(ev):
          time.sleep(0.1)
          interface.Stop()
          return ev
+      elif ev.data2 == 67:
+         getTracks(bpm_g)
+         return ev
       else:
          print("Program change not parsed")
          print(ev.data1)
@@ -107,10 +110,9 @@ def temporead(ev):
          delta = t2 - t1
          bpm = ( 60000000 / delta.microseconds ) / 24
          diff = abs( bpm_g - bpm )
-         if ( diff / float(bpm)) * 100 > 2 and bpm < 280 and bpm > 60:
+         if ( diff / float(bpm)) * 100 > 5 and bpm < 280 and bpm > 60:
             bpm_g = bpm
             print(bpm_g)
-            getTracks(bpm_g)
       return ev
    else:
       return None
@@ -121,8 +123,8 @@ config (
    client_name='hackday',
 )
 
-#jackclient.disconnect("PulseAudio JACK Sink:front-left", "system:playback_1")
-#jackclient.disconnect("PulseAudio JACK Sink:front-right", "system:playback_2")
+jackclient.disconnect("PulseAudio JACK Sink:front-left", "system:playback_1")
+jackclient.disconnect("PulseAudio JACK Sink:front-right", "system:playback_2")
 
 run(
    [
