@@ -6,7 +6,7 @@ echo "Midem hackday 2015"
 
 echo "Running jack..."
 
-/usr/bin/qjackctl -a $BASEDIR/Cannes.xml -s
+/usr/bin/qjackctl -a $BASEDIR/Cannes.xml -s &
 
 sleep 4
 
@@ -22,3 +22,7 @@ echo "Activating rack FX..."
 #echo "Running spotify..."
 
 #/usr/bin/spotify > /dev/null &
+
+echo "Running main controller..."
+
+./cannes.py
