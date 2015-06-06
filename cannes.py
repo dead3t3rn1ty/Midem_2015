@@ -2,12 +2,15 @@
 
 import time
 import dbus
+import jack
 from mididings import *
 
 bus = dbus.SessionBus()
 
 proxy = bus.get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2')
 interface = dbus.Interface(proxy, dbus_interface='org.mpris.MediaPlayer2.Player')
+jackclient = jack.Client("MyGreatClient")
+
 
 def controllerfy(ev):
    if ev.type == PROGRAM:
@@ -37,7 +40,7 @@ def controllerfy(ev):
          interface.Stop()
          return ev
       else:
-         print("Program change non parsato")
+         print("Program change not parsed")
          print(ev.data1)
          print(ev.data2)
          return None
@@ -54,5 +57,8 @@ config (
    backend='alsa',
    client_name='hackday',
 )
+
+jackclient.disconnect("PulseAudio JACK Sink:front-left", "system:playback_1")
+jackclient.disconnect("PulseAudio JACK Sink:front-right", "system:playback_2")
 
 run(Process(controllerfy))

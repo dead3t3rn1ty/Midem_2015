@@ -19,9 +19,11 @@ echo "Activating rack FX..."
 
 /usr/bin/jack-rack lowpass-kp+ &
 
-#echo "Running spotify..."
+echo "Running spotify..."
 
-#/usr/bin/spotify > /dev/null &
+/usr/bin/spotify > /dev/null &
+
+sleep 2
 
 echo "Running main controller..."
 
