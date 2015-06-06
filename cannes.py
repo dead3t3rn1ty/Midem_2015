@@ -9,7 +9,7 @@ bus = dbus.SessionBus()
 
 proxy = bus.get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2')
 interface = dbus.Interface(proxy, dbus_interface='org.mpris.MediaPlayer2.Player')
-jackclient = jack.Client("MyGreatClient")
+jackclient = jack.Client("Hackday")
 
 
 def controllerfy(ev):

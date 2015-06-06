@@ -17,7 +17,7 @@ pacmd set-default-sink jack_out
 
 echo "Activating rack FX..."
 
-/usr/bin/jack-rack lowpass-kp+ &
+/usr/bin/jack-rack $BASEDIR/lowpass-kp+ &
 
 echo "Running spotify..."
 
