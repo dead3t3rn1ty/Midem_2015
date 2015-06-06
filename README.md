@@ -11,3 +11,11 @@ Tapping the touchscreen plays the song, it keeps playing until you don't remove 
 The x axes of the touchscreen controls the cutoff frequency of a low pass filter.
 The y axes of the touchscreen controls the resonance.
 Selecting a different time using the "TAP TEMPO" button will trigger a query on echonest to find new songs.
+
+## Dependencies
+
+Spotify linux desktop client (it uses the dbus interface to control the spotify playback).
+Jack
+Jack-rack to apply LADSPA filters
+Python libraries: time, dbus, jack, datetime, json, requests, mididings.
+
